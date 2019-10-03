@@ -1,0 +1,118 @@
+﻿@page
+@model Hakkers.Pages.Assignments.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@if (@Model.IsMechanic == false)
+{
+    <h4>Manage Assignments</h4>
+
+    <p>
+        <a asp-page="Create">Create Assignment</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.AssignmentViewModels[0].Client)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AssignmentViewModels[0].Category)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AssignmentViewModels[0].Priority)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AssignmentViewModels[0].Appointment)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AssignmentViewModels[0].Mechanic)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.AssignmentViewModels)
+            {
+                <tr>
+                    <td>
+
+                        <a href="tel:@Html.DisplayFor(modelItem => item.ClientPhone)">@Html.DisplayFor(modelItem => item.Client)</a>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Category)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Priority)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Appointment)
+                    </td>
+                    <td>
+                        <a href="tel:@Html.DisplayFor(modelItem => item.MechanicPhone)">@Html.DisplayFor(modelItem => item.Mechanic)</a>
+                    </td>
+                    <td>
+                        <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                        <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                        <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <h4>Manage Assignments</h4>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.AssignmentViewModels[0].Client)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AssignmentViewModels[0].Category)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AssignmentViewModels[0].Priority)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AssignmentViewModels[0].Appointment)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AssignmentViewModels[0].Description)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.AssignmentViewModels)
+            {
+                <tr>
+                    <td>
+
+                        <a href="tel:@Html.DisplayFor(modelItem => item.ClientPhone)">@Html.DisplayFor(modelItem => item.Client)</a>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Category)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Priority)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Appointment)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                        <a asp-page="./Details" asp-route-id="@item.Id">Details</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

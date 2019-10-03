@@ -1,0 +1,94 @@
+﻿@page
+@model Hakkers.Pages.Assignments.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h4>Edit Assignment</h4>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Assignments.Id" />
+            <div class="form-group">
+                <label asp-for="Assignments.FkPlanner" class="control-label"></label>
+                <input asp-for="Assignments.FkPlanner" class="form-control" />
+                <span asp-validation-for="Assignments.FkPlanner" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Assignments.FkClient" class="control-label"></label>
+                <input asp-for="Assignments.FkClient" class="form-control" />
+                <span asp-validation-for="Assignments.FkClient" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Assignments.FkMechanic" class="control-label"></label>
+                <input asp-for="Assignments.FkMechanic" class="form-control" />
+                <span asp-validation-for="Assignments.FkMechanic" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Assignments.FkCategory" class="control-label"></label>
+                <input asp-for="Assignments.FkCategory" class="form-control" />
+                <span asp-validation-for="Assignments.FkCategory" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Assignments.FkPriority" class="control-label"></label>
+                <input asp-for="Assignments.FkPriority" class="form-control" />
+                <span asp-validation-for="Assignments.FkPriority" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Assignments.FkStatus" class="control-label"></label>
+                <input asp-for="Assignments.FkStatus" class="form-control" />
+                <span asp-validation-for="Assignments.FkStatus" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Assignments.Description" class="control-label"></label>
+                <input asp-for="Assignments.Description" class="form-control" />
+                <span asp-validation-for="Assignments.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Assignments.Appointment" class="control-label"></label>
+                <input asp-for="Assignments.Appointment" class="form-control" />
+                <span asp-validation-for="Assignments.Appointment" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Assignments.Departure" class="control-label"></label>
+                <input asp-for="Assignments.Departure" class="form-control" />
+                <span asp-validation-for="Assignments.Departure" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Assignments.Arrival" class="control-label"></label>
+                <input asp-for="Assignments.Arrival" class="form-control" />
+                <span asp-validation-for="Assignments.Arrival" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Assignments.Finished" class="control-label"></label>
+                <input asp-for="Assignments.Finished" class="form-control" />
+                <span asp-validation-for="Assignments.Finished" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Assignments.Note" class="control-label"></label>
+                <input asp-for="Assignments.Note" class="form-control" />
+                <span asp-validation-for="Assignments.Note" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Assignments.Created" class="control-label"></label>
+                <input asp-for="Assignments.Created" class="form-control" />
+                <span asp-validation-for="Assignments.Created" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

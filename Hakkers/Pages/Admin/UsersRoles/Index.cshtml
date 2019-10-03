@@ -1,0 +1,68 @@
+﻿@page
+@model Hakkers.Pages.Admin.UsersRoles.IndexModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h4>Manage Users Roles</h4>
+
+<p>
+    <a asp-page="AddRoleToUser">Assign a Role to a User</a>
+</p>
+
+@if (Model.UsersAndRoles != null)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    User
+                </th>
+                <th>
+                    Role
+                </th>
+                <th>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var userAndRoles in Model.UsersAndRoles)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => userAndRoles.Email)
+                    </td>
+                    @if (userAndRoles.Roles.Count != 0)
+                    {
+                        <td>
+                            @foreach (var role in userAndRoles.Roles)
+                            {
+                                <div>@role</div>
+                            }
+                        </td>
+                    }
+                    else
+                    {
+                        <td>
+                        </td>
+                    }
+
+                    <td align="right">
+                        <a asp-page="./Add" asp-route-id="@userAndRoles.Id">Add</a> |
+                        <a asp-page="./Details" asp-route-id="@userAndRoles.Id">Details</a> |
+                        <a asp-page="./Revoke" asp-route-id="@userAndRoles.Id">Revoke</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>
+        There are no roles assigned to any user.
+    </p>
+}
+
+<a asp-page="../Index">Back to Admin Panel</a>

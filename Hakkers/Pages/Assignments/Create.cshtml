@@ -1,0 +1,71 @@
+﻿@page
+@model Hakkers.Pages.Assignments.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Assignment</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Assignment.FkClient" class="control-label"></label>
+                <select asp-for="SelectedClient" class="form-control"
+                        asp-items="@Model.ClientsSelectList">
+                    <option value="">-- Select --</option>
+                </select>
+                <span asp-validation-for="Assignment.FkClient" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Assignment.Description" class="control-label"></label>
+                <textarea asp-for="Description" class="form-control" text-wrap:normal" type="text" placeholder="Add Description"></textarea>
+                <span asp-validation-for="Assignment.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Assignment.FkCategory" class="control-label"></label>
+                <select asp-for="SelectedCategory" class="form-control"
+                        asp-items="@Model.CatagoriesSelectList">
+                    <option value="">-- Select --</option>
+                </select>
+                <span asp-validation-for="Assignment.FkCategory" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Assignment.FkPriority" class="control-label"></label>
+                <select asp-for="SelectedPriority" class="form-control"
+                        asp-items="@Model.PrioritiesSelectList">
+                    <option value="">-- Select --</option>
+                </select>
+                <span asp-validation-for="Assignment.FkPriority" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Assignment.Appointment" class="control-label"></label>
+                <input asp-for="Assignment.Appointment" class="form-control" />
+                <span asp-validation-for="Assignment.Appointment" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Assignment.FkMechanic" class="control-label"></label>
+                <select asp-for="SelectedMechanic" class="form-control"
+                        asp-items="@Model.MechanicsSelectList">
+                    <option value="">-- Select --</option>
+                </select>
+                <span asp-validation-for="Assignment.FkMechanic" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,42 @@
+﻿@page
+@model Hakkers.Pages.Admin.UsersRoles.AddRoleToUserModel
+@{
+    ViewData["Title"] = "AddRoleToUser";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h4>Add Role to User</h4>
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label class="control-label">User</label>
+                <select asp-for="SelectedUser" asp-items="@(Model.UsersSelectList)" class="form-control">
+                    <option>Select User</option>
+                </select>
+                <span asp-validation-for="SelectedUser" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Role</label>
+                <select asp-for="SelectedRole" asp-items="@(Model.RolesSelectList)" class="form-control">
+                    <option>Select Role</option>
+                </select>
+                <span asp-validation-for="SelectedRole" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Assign Role to User" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
